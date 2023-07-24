@@ -1,0 +1,17 @@
+ <tbody *ngFor="let cts of listContacts">
+    <tr>
+        <th>{{cts.id}}</th>
+        <td>{{cts.nom }}</td>
+        <td>{{cts.prenom }}</td>
+        <td>{{cts.telephone}}</td>
+        <td>{{cts.adresse}}</td>
+        <td>
+            <i class="fa fa-toggle-on active" *ngIf="cts.is_active == 'OUI'" (click)="changeStatus(cts);"></i>
+            <i class="fa fa-toggle-on fa-rotate-180 inactive"  *ngIf="cts.is_active == 'NON'" (click)="changeStatus(cts);"></i>
+        </td>
+        <td>
+            <a [routerLink] = "['/contact', cts.id]"> <span class="fa fa-edit fa-lg blue"> </span></a> &nbsp;&nbsp;
+            <a (click)="delete(cts)" > <span class="fa fa-trash fa-lg red"> </span> </a>
+        </td>
+    </tr>
+</tbody>

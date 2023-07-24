@@ -1,0 +1,196 @@
+<div class="container-fluid col-sm-10" >
+    <form [formGroup]="registerForm" class="normal-form"  (ngSubmit)="registerForm.valid && saveInvoice(registerForm)">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active red bold" aria-current="page">Nouvelle Facture</li>
+            </ol>
+        </nav>
+        
+        <mat-grid-list cols="2" rowHeight="300px" style="margin-top: -20px;">
+            <mat-grid-tile style="width:50px" >
+                <div class="controles-container">
+                    <mat-form-field>
+                        <input formControlName="prenom" matInput  placeholder="Prenom" />
+                        <mat-error>Champ Prenom est Obligatoire</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input formControlName="adresse" matInput  placeholder="Adresse" />
+                        <mat-error>Champ Adresse est Obligatoire</mat-error>
+                    </mat-form-field>
+                  
+                    <mat-form-field>
+                        <input formControlName="email" matInput  placeholder="Email" />
+                        <mat-error>Champ Email est Obligatoire</mat-error>
+                    </mat-form-field>
+
+            
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" value="{{tauxTva}}" formControlName="tva">Tva</mat-checkbox>
+                        </section>
+                    </div>
+                      
+                    <div class="button-row">
+                        <input type="hidden" formControlName="$id" />
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile style="width:30px;margin-top: 25px;">
+                <div class="controles-container"> 
+                    <mat-form-field >
+                        <input formControlName="nom" matInput  placeholder="Nom" />
+                        <mat-error *ngIf="registerForm.controls['nom'].errors?.required">Champ Nom est Obligatoire</mat-error>
+                        <mat-error *ngIf="registerForm.controls['nom'].errors?.maxlength">Champ Nom est Obligatoire</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="telephone" matInput  placeholder="Telephone" />
+                        <mat-error>Champ Telephone est Obligatoire</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select formControlName="type" placeholder="Type">
+                            <mat-option>none</mat-option>
+                            <ng-container  *ngFor="let typecli of typeClient">
+                                <mat-option value="{{typecli.value}}" >{{typecli.libelle}}</mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input formControlName="ninea" matInput  placeholder="Ninea" />
+                        <mat-error>Champ Ninea est Obligatoire</mat-error>
+                    </mat-form-field>
+
+                  
+                    <div class="button-row">
+                        <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+                        <button type="reset"  class="btn btn-light">Annuler</button>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+
+    <div class="form-row">
+        <div class="form-group col-md-3"></div>
+        <div class="form-group col-md-3"></div>
+        <div class="form-group col-md-3"></div>
+        <div class="form-group col-md-3">
+            <span style="text-decoration:none;font-weight:bold;margin-right: 15px;" >
+                <button class="btn btn-light btn-circle btn-circle-sm m-1" (click)="SelectArticles();">
+                    <i class="fa fa-plus fa-lg green"></i>
+                </button>
+                Ajouter un article
+            </span>
+        </div>
+    </div>
+
+    <div class="form-row col-sm-12">
+        <!--div class="form-group col-sm-1"></div-->
+        <div class="form-group col-sm-12">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th >Ref</th>
+                        <th >Categorie</th>
+                        <th >Nom</th>
+                        <th >Libelle</th>
+                        <th class="right">PU</th>
+                        <th >Nbre</th>
+                        <th >Mnt Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let prod of tobeDisplayed$">
+                        <td>{{prod.ref}}</td>
+                        <td>{{prod.categorie }}</td>
+                        <td>{{prod.nom}}</td>
+                        <td>{{prod.libelle}}</td>
+                        <td class="right">{{ prod.PU }}</td>
+                        <td class="center">{{ prod.nbre}}</td>
+                        <td class="bold right">{{ prod.nbre * prod.PU  }}</td>
+                    </tr>
+                  
+                        <tr *ngIf="tobeDisplayed$.length > 0">
+                            <td ></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Total:</td>
+                            <td class="bold right">{{ calculTotalAchat()  }}</td>
+                        </tr>
+                        <tr *ngIf=" tobeDisplayed$.length > 0 && tauxTva > 0 ">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Montant Tva:</td>
+                            <td class="bold right">{{ calculMontantTva()  }}</td>
+                        </tr>
+
+                        <tr *ngIf="tobeDisplayed$.length > 0">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Montant TTC:</td>
+                            <td class="bold right">{{ calculMontantTotalTTC()  }}</td>
+                        </tr>
+                  
+                </tbody>
+            </table>
+        </div>
+        <!--div class="form-group col-sm-1"></div-->
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div fxLayout.xs="column wrap" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10" *ngFor="let prod of products">
+                    <div class="form-row">
+                        <div class="col-sm-4" *ngFor="let prod of products">
+                            <mat-card  fxFlex.sm="1 1 calc(50%-10px)" fxFlex.md="1 1 calc(33%-10px)" fxFlex.gt-md="1 1 calc(25%-10px)">
+                                <mat-card-header class="mathead">
+                                    <div mat-card-avatar 
+                                        [ngClass]="getImgClass(prod.image)">
+                                    </div>
+                                    <mat-card-title fxFlex="40%" fxLayout.gt-xs="row" fxLayout.xs="column">{{ prod.nom }}</mat-card-title>
+                                    <mat-card-subtitle  fxFlex="60%">{{ prod.libelle }}</mat-card-subtitle>
+                                </mat-card-header>
+                                <img mat-card-image [src]="prod.image"  width="100%">
+                                <mat-card-content>
+                                    <p></p>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <span fxFlex="30%" (click)="addInSelection(prod)">
+                                        <button class="btn btn-light btn-circle btn-circle-md m-1">
+                                          <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    </span>
+                                    <span fxFlex="70%" style="margin-top:10px;"> Prix: <b>{{ prod.PU  }}</b></span>
+                                </mat-card-actions>
+                            </mat-card>
+                            <span>&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

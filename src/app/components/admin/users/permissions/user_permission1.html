@@ -1,0 +1,31 @@
+<admin-header></admin-header>
+<div class="form-group">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="font-size:10px;">
+        <mat-grid-list cols="2" style="font-size:10px;height:auto;">
+            <mat-grid-tile>
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+                        <button mat-icon-button disabled></button>
+                        <mat-checkbox class="checklist-leaf-node" [checked]="checklistSelection.isSelected(node)"  (change)="todoLeafItemSelectionToggle(node)">{{node.item}}
+                        </mat-checkbox>
+                    </mat-tree-node>
+                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+                        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename">
+                            <mat-icon class="mat-icon-rtl-mirror"> {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</mat-icon>
+                        </button>
+                        <mat-checkbox [checked]="descendantsAllSelected(node)" [indeterminate]="descendantsPartiallySelected(node)"
+                                        (change)="todoItemSelectionToggle(node)">{{node.item}}
+                        </mat-checkbox>
+                        <!--button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button-->
+                    </mat-tree-node>
+                </mat-tree>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+        </mat-grid-list>
+        <div class="button-row">
+            <button type="submit"  class="btn btn-primary" (click)="getSelectedTreeNodes(treeControl)">Submit</button>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

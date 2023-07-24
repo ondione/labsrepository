@@ -1,0 +1,264 @@
+/* You can add global styles to this file, and also import other style files */
+
+  
+@import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+.img {
+    width: 100%;
+    margin-bottom: 18%;
+  }
+  .card-picture {
+    width: 200px;
+    margin-bottom: 2%;
+  }
+  .container {
+    min-height: 100%;
+    width: 100%;
+  }
+  .search-form {
+    width: 90%;
+  }
+  mat-card-title, mat-card-footer{
+      font-size: 10px;
+  }
+
+  fill-remaining-space{
+    flex: 1 1 auto;
+  }
+  .normal-form {
+    margin:10px;
+  }
+  .controles-container{
+    width:100%;
+    padding:5%;
+  }
+  .controles-container > * {
+    width: 60%;
+  }
+  .add-button-padding{
+    margin: 10px;
+  }
+  mat-radio-group mat-radio-button {
+    margin-left: 5px;
+  }
+
+  .button-row button{
+    margin: 5px;
+  }
+
+
+ 
+.bslf{
+    width: 350px;
+    margin: 120px auto;
+    padding: 25px 20px;
+    background-color: #fff;
+    background-image: -moz-linear-gradient(top, #ccc, #fff);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ccc), to(#fff));
+    background-image: -webkit-linear-gradient(top, #ccc, #fff);
+    background-image: -o-linear-gradient(top, #ccc, #fff);
+    background-image: linear-gradient(to bottom, #ccc, #fff);
+    box-shadow: 2px 2px 4px #fff;
+    border-radius: 5px;
+    color: #000;
+  }
+ .bslf h2{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+  }
+  .bslf a{ 
+    color: #000;
+  }
+  .bslf a:hover {
+  	text-decoration: none;
+    color: #c0c0c0;
+  }
+  .bslf .checkbox-inline{
+    padding-top: 7px;
+  }
+
+
+
+.navbar-custom {
+    background-color: #ccc;
+    border-color: #ccc;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ccc), to(#ddd));
+    background-image: -webkit-linear-gradient(top, #ccc, 0%, #ddd, 100%);
+    background-image: -moz-linear-gradient(top, #ccc 0%, #ddd 100%);
+    background-image: linear-gradient(to bottom, #ccc 0%, #ddd 100%);
+    background-repeat: repeat-x;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ccc', endColorstr='#ddd', GradientType=0);
+}
+
+.navbar-custom .navbar-brand {
+    color: #ffffff;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: #e6e6e6;
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-text {
+    color: #ffffff;
+}
+
+.navbar-custom .navbar-nav > li:last-child > a {
+    border-right: 1px solid #ccc;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #ffffff;
+    border-left: 1px solid #ccc;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    color: #c0c0c0;
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus ,
+
+.navbar-custom .navbar-nav > .current > a,
+.navbar-custom .navbar-nav > .current > a:hover,
+.navbar-custom .navbar-nav > .current > a:focus {
+    color: #c0c0c0;
+    background-color: #ccc;
+    background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ccc), to(#ddd));
+    background-image: -webkit-linear-gradient(top, #ccc, 0%, #ddd, 100%);
+    background-image: -moz-linear-gradient(top, #ccc 0%, #ddd 100%);
+    background-image: linear-gradient(to bottom, #ccc 0%, #0000 100%);
+    background-repeat: repeat-x;
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ccc', endColorstr='#ddd', GradientType=0);
+}
+
+.navbar-custom .navbar-nav > .disabled > a,
+.navbar-custom .navbar-nav > .disabled > a:hover,
+.navbar-custom .navbar-nav > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+}
+
+.navbar-custom .navbar-toggle {
+    border-color: #dddddd;
+}
+
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color: #dddddd;
+}
+
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: #cccccc;
+}
+
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+    border-color: #0070a8;
+}
+
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #c0c0c0;
+    border-bottom-color: #c0c0c0;
+}
+
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+    background-color: #ccc;
+    color: #c0c0c0;
+}
+
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+    border-top-color: #c0c0c0;
+    border-bottom-color: #c0c0c0;
+}
+
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+
+@media (max-width: 767) {
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+        color: #ffffff;
+        background-color: #ccc;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #c0c0c0;
+        background-color: transparent;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #c0c0c0;
+        background-color: #ccc;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+        color: #cccccc;
+        background-color: transparent;
+    }
+}
+
+.navbar-custom .navbar-link {
+    color: #ffffff;
+}
+
+.navbar-custom .navbar-link:hover {
+    color: #c0c0c0;
+}
+
+div.formulaire_button{
+    line-height: 70px; 
+    text-align: center;
+    border-top:1px solid #ccc;
+}
+.has-success{
+    border:1px solid green;
+}
+.has-danger{
+    border:1px solid red;
+}
+.help-block{
+    color:red;
+}
+.center_loader{
+
+    vertical-align: middle;
+    right: -50%;
+    top:5%;
+}
+
+.panier_class .card-body{
+  padding: 1.25rem 0;
+}
+
+.panier_class .card-header {
+  padding: 0.5rem 0.5rem;
+}
+.panier_class .table td, .table th {
+    padding: .75rem 1em;
+}
+
+
+.panier_class button.btn-circle-sm{
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  font-size: 0.6rem;
+}
+

@@ -1,0 +1,68 @@
+
+<div class="container">
+    <mat-toolbar>
+        <span class="fill-remaining-space"> </span>
+        <span>Ajout Produit</span>
+        <span class="fill-remaining-space"> </span>
+    </mat-toolbar>
+    <div></div>
+    
+    <form [formGroup]="produitForm" class="normal-form"  (ngSubmit)="produitForm.valid && saveProduct(produitForm)">
+        <mat-grid-list cols="2" rowHeight="300px">
+            <mat-grid-tile>
+                <div class="controles-container">
+                    <input type="hidden" formControlName="$id" >
+                    <mat-form-field>
+                        <input formControlName="ref" matInput  placeholder="Reference" />
+                        <mat-error>Champ Refence est Obligatoire</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="nom" matInput  placeholder="Nom produit" />
+                        <mat-error *ngIf="produitForm.controls['nom'].errors?.required">Champ Nom est Obligatoire</mat-error>
+                        <mat-error *ngIf="produitForm.controls['nom'].errors?.maxlength">Champ Nom est Obligatoire</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="libelle" matInput  placeholder="libellé Produit" />
+                        <mat-error>Champ Libelle est Obligatoire</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="quantite_stock" matInput  placeholder="Quantité stock" />
+                        <mat-error>Champ Quantité est Obligatoire</mat-error>
+                    </mat-form-field>
+                    <div class="add-button-padding">
+                        <mat-radio-group formControlName="isexpired">
+                            <mat-radio-button value="oui">OUI</mat-radio-button>
+                            <mat-radio-button value="non">NON</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controles-container"> 
+                        <mat-form-field>
+                            <mat-select formControlName="categorie" placeholder="categorie">
+                                <mat-option>none</mat-option>
+                                <ng-container  *ngFor="let cat of categorie_list">
+                                    <mat-option value="{{cat.value}}" >{{cat.value}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input formControlName="date_expired" matInput [matDatepicker]="picker" placeholder="Choose a date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error>Champ date expired est Obligatoire</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="PU" matInput  placeholder="Prix Unitaire" >
+                        </mat-form-field>
+                        <div class="button-row">
+                            <button mat-raised-button color="primary" type="submit"  [disabled]="produitForm.invalid" >Enregister</button>
+                            <button mat-raised-button color="warn">Annular</button>
+                        </div>
+                    </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</div>

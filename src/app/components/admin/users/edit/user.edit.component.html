@@ -1,0 +1,64 @@
+<div class="container">
+      <mat-toolbar>
+         <span class="fill-remaining-space"> </span>
+         <span>Edit User</span>
+         <span class="fill-remaining-space"> </span>
+      </mat-toolbar>
+      <div></div>
+      <form [formGroup]="editForm" class="normal-form"  (ngSubmit)="editForm.valid && updateUser(editForm)">
+          <mat-grid-list cols="2" rowHeight="300px">
+              <mat-grid-tile>
+                  <div class="controles-container">
+                     <input type="hidden" formControlName="$id" >
+                     <mat-form-field>
+                        <input formControlName="firstname" matInput  placeholder="firstname" />
+                        <mat-error>Champ firstname est Obligatoire</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input formControlName="lastname" matInput  placeholder="lastname" />
+                          <mat-error *ngIf="editForm.controls['lastname'].errors?.required">Champ lastname est Obligatoire</mat-error>
+                          <mat-error *ngIf="editForm.controls['lastname'].errors?.maxlength">Champ lastname est Obligatoire</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                          <input formControlName="login" matInput  placeholder="login" />
+                          <mat-error>Champ Login est Obligatoire</mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input formControlName="telephone" matInput  placeholder="telephone" />
+                        <mat-error>Champ Telephone est Obligatoire</mat-error>
+                      </mat-form-field>
+                  </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <div class="controles-container"> 
+                     <mat-form-field>
+                        <input formControlName="adresse" matInput  placeholder="Adresse" />
+                        <mat-error>Champ Adresse est Obligatoire</mat-error>
+                     </mat-form-field>
+                     <mat-form-field>
+                        <mat-select formControlName="role" placeholder="role">
+                           <mat-option>none</mat-option>
+                           <ng-container  *ngFor="let role of roles">
+                              <mat-option value="{{role.value}}" >{{role.description}}</mat-option>
+                           </ng-container>
+                        </mat-select>
+                     </mat-form-field>
+                     <div class="add-button-padding">
+                        <mat-radio-group formControlName="isEnabled">
+                           <mat-radio-button value="OUI" >Actif</mat-radio-button>
+                           <mat-radio-button value="NON" >Inactif</mat-radio-button>
+                        </mat-radio-group>
+                     </div>
+                     <div class="button-row">
+                        <button type="submit" [disabled]="!editForm.valid" class="btn btn-primary">Submit</button>
+                     </div>
+                  </div>
+              </mat-grid-tile>
+          </mat-grid-list>
+      </form>
+  </div>
+  
+  
+  
+  
+  

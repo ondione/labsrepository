@@ -1,0 +1,87 @@
+<div class="form-row">
+   
+    <div class="col-2"> 
+
+    </div>
+    <div class="col-6">
+        <product-search (searchProduct)="searchProduct($event)"> </product-search>
+    </div>
+    <div class="col-4"></div>
+    
+</div>
+  
+    <div class="form-row">
+        <!--div class="col-2">
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-primary">Toutes les Categories</button>
+                <button id="button-split" type="button" dropdownToggle class="btn btn-primary dropdown-toggle dropdown-toggle-split"  aria-controls="dropdown-split">
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+                    <li role="menuitem"><a class="dropdown-item" href="#">Alimenetation</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Informatique</a></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Electromenager</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Habillement</a></li>
+                </ul>
+            </div>
+        </div-->
+        <div class="col-8">
+            <produit-list [products]="products$" (AddInCart)="addInCart1($event)"></produit-list>
+        </div>
+        <div class="col-4">
+            <div class="form-row">
+                <div class="col-10">
+                    <panier-list [panierList]="newTab" (removePanItem)="removeInCard($event)" [totalPanier]="totalAchat$"> </panier-list>
+                    <total-panier [totalPanier]="totalAchat$" [objectIspayment]="paymentObject"> </total-panier>
+                    <validate-shopping [panier]="ispanier" (continueProcess)="cantcontinue($event)" (discardProcess)="cantdiscard($event)"> </validate-shopping>
+                    <payment-button [checkout]="checkout" [Panier]="newTab" (showModal)="show($event)"></payment-button>
+                    <commande-view [commandes]="commandes"></commande-view>
+                </div> 
+                <div class="col-1">
+                    <app-speed-dial-fab></app-speed-dial-fab>
+                </div>       
+            </div> 
+        </div>
+    </div>
+    <!--div class="form-row">
+        <div class="col-sm-3" *ngIf="ispanier">
+            <app-speed-dial-fab></app-speed-dial-fab>
+        </div>
+    </div-->
+    <!--div class="form-group">
+        <div class="col-sm-2"> 
+            
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-primary">Toutes les Categories</button>
+                <button id="button-split" type="button" dropdownToggle class="btn btn-primary dropdown-toggle dropdown-toggle-split"  aria-controls="dropdown-split">
+                    <span class="caret"></span>
+                    <span class="sr-only">Split button!</span>
+                </button>
+                <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+                    <li role="menuitem"><a class="dropdown-item" href="#">Alimenetation</a></li>
+                   
+                    <li role="menuitem"><a class="dropdown-item" href="#">Informatique</a></li>
+                   
+                    <li role="menuitem"><a class="dropdown-item" href="#">Electromenager</a></li>
+                    <li class="divider dropdown-divider"></li>
+                    <li role="menuitem"><a class="dropdown-item" href="#">Habillement</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-sm-7">
+            <produit-list [products]="products$" (AddInCart)="addInCart1($event)"></produit-list>
+        </div>
+        <div class="col-sm-3">
+            <panier-list [panierList]="newTab" (removePanItem)="removeInCard($event)" [totalPanier]="totalAchat$"> </panier-list>
+            <total-panier [totalPanier]="totalAchat$" [objectIspayment]="paymentObject"> </total-panier>
+            <validate-shopping [panier]="ispanier" (continueProcess)="cantcontinue($event)" (discardProcess)="cantdiscard($event)"> </validate-shopping>
+            <payment-button [checkout]="checkout" [Panier]="newTab" (showModal)="show($event)"></payment-button>
+            <commande-view [commandes]="commandes"></commande-view>
+        </div>
+        <div class="col-sm-3" *ngIf="ispanier">
+           <app-speed-dial-fab></app-speed-dial-fab>
+        </div>
+    </div-->

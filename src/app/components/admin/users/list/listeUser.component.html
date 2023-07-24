@@ -1,0 +1,95 @@
+
+<div class="row"></div>
+
+<div class="row"></div>
+<div class="row"></div>
+<div class="row">&nbsp;&nbsp;</div>
+<div class="col-sm-12 col-sm-offset-2" >
+	<span class="col-sm-5 linkredirect blue_st" >	
+		<a *ngIf="selection.hasValue() && selection.selected.length == 1"  [routerLink] = "['/user',selection.selected[0].id_user ]"> 
+			&nbsp;&nbsp;<i class="material-icons">edit</i> Editer</a> &nbsp;&nbsp;
+		<a *ngIf="selection.hasValue() && selection.selected.length == 1" (click)="deleteUser(contact)"> <i class="material-icons">delete_forever</i> Supprimer</a>
+		<a *ngIf="selection.hasValue() && selection.selected.length == 1"  [routerLink] = "['/permissions',selection.selected[0].id_user ]" (click)="selectUser(selection.selected[0])"> 
+			&nbsp;&nbsp;<i class="material-icons">edit</i> Add Permission</a> 
+	</span>
+	<span class="col-sm-4 col-sm-offset-1 linkredirect blue_st">
+		<a [routerLink] = "['/adduser']">
+			<i class="material-icons">add</i> Ajout User
+		</a>
+	</span>
+</div>
+
+{{paginator._pageIndex }}
+
+<div class="form-group">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+	   <mat-paginator [length]="datasourcelength" [pageSize]="itemPerPage" [pageSizeOptions]="[1, 5, 10, 25, 100]"  (click)="_changePageSize($event)" >
+
+		</mat-paginator>
+	   <table mat-table [dataSource]="dataSource"   class="mat-elevation-z8 table table-striped bordered table-responsive" cellspacing="0" width="100%">
+			<!-- Checkbox Column -->
+			<ng-container matColumnDef="select">
+				<th mat-header-cell *matHeaderCellDef>
+				<mat-checkbox (change)="$event ? masterToggle() : null"
+								[checked]="selection.hasValue() && isAllSelected()"
+								[indeterminate]="selection.hasValue() && !isAllSelected()">
+				</mat-checkbox>
+				</th>
+				<td mat-cell *matCellDef="let row">
+				<mat-checkbox (click)="$event.stopPropagation()"
+								(change)="$event ? selection.toggle(row) : null"
+								[checked]="selection.isSelected(row)">
+				</mat-checkbox>
+				</td>
+			</ng-container>
+		
+			<!-- Position Column -->
+			<ng-container matColumnDef="position">
+				<th mat-header-cell *matHeaderCellDef> No. </th>
+				<td mat-cell *matCellDef="let element"> {{element.id_user}} </td>
+			</ng-container>
+	
+			<!-- Name Column -->
+			<ng-container matColumnDef="firstname">
+				<th mat-header-cell *matHeaderCellDef> Reference </th>
+				<td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+			</ng-container>
+		
+			<!-- Weight Column -->
+			<ng-container matColumnDef="lastname">
+				<th mat-header-cell *matHeaderCellDef> Lastname </th>
+				<td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+			</ng-container>
+		
+			<!-- PU Column -->
+			<ng-container matColumnDef="login">
+				<th mat-header-cell *matHeaderCellDef> Login </th>
+				<td mat-cell *matCellDef="let element"> {{element.login}} </td>
+			</ng-container>
+			<!-- Nom Column -->
+			<ng-container matColumnDef="telephone">
+				<th mat-header-cell *matHeaderCellDef> Telephone </th>
+				<td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+			</ng-container>
+				<!-- PU Column -->
+			<ng-container matColumnDef="adresse">
+				<th mat-header-cell *matHeaderCellDef>Adresse </th>
+				<td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+			</ng-container>
+			<ng-container matColumnDef="role">
+				<th mat-header-cell *matHeaderCellDef>Role </th>
+				<td mat-cell *matCellDef="let element"> {{element.role}} </td>
+			</ng-container>
+			<ng-container matColumnDef="actif_inactif">
+				<th mat-header-cell *matHeaderCellDef>Active /Inactive </th>
+				<td mat-cell *matCellDef="let element"> {{element.actif_inactif}} </td>
+			</ng-container>
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"
+				(click)="selection.toggle(row)">
+			</tr>
+		</table>	
+	</div>
+	<div class="col-sm-2"></div>
+</div>

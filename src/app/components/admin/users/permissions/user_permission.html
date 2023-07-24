@@ -1,0 +1,133 @@
+
+<form [formGroup]="saveForm" class="normal-form"  (ngSubmit)="saveForm.valid && savePermission(saveForm)">
+    <mat-grid-list cols="1" >
+        <mat-grid-tile>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Gestion Utilisateurs
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="adduser">Ajout Utilisateur</mat-checkbox>
+                        </section>
+                    </div>
+
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="deluser">Supprimer Utilisateur</mat-checkbox>
+                        </section>
+                    </div>
+
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="upduser">Modifier Utilisateur</mat-checkbox>
+                        </section>
+                    </div>
+
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="lisuser">Lister Utilisateur</mat-checkbox>
+                        </section>
+                    </div>
+
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="disuser">Desactiver Utilisateur</mat-checkbox>
+                        </section>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Gestion Contacts
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="addcontact">Ajout Contact</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="delcontact">Supprimer Contact</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="updcontact">Modifier Contact</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="liscontact">Lister Contact</mat-checkbox>
+                        </section>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Gestion Produits
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="addprod">Ajout Produit</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="delprod">Supprimer Produit</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="updprod">Modifier Produit</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="lisprod">Lister Produit</mat-checkbox>
+                        </section>
+                    </div>
+                </mat-expansion-panel>
+                    
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Historique Paiement
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="addhist">Ajout Historique</mat-checkbox>
+                        </section>
+                    </div>
+                    <div class="add-button-padding">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="lishist">Lister Historique</mat-checkbox>
+                        </section>
+                    </div>
+                </mat-expansion-panel>
+                <div class="button-row">
+                    <button type="submit" [disabled]="!saveForm.valid" class="btn btn-primary">Submit</button>
+                </div>
+            </mat-accordion>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>
+<div class="form-group">
+    <div class="col-sm-10" style="height:10px" >
+        <ngb-alert  *ngIf="displayAlert" [dismissible]="alertdismiss" [type]="alerttypeCss"  class="alert">
+            {{ successMessage }} 
+        </ngb-alert>
+    </div>
+</div>
+
+
+
+

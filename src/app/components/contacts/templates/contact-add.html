@@ -1,0 +1,107 @@
+<div class="container-fluid col-sm-12" >
+
+    <form name="form" #f="ngForm" (ngSubmit)="saveContact(contact)" novalidate class="form-horizontal col-sm-12">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active red" aria-current="page">Ajout Contact</li>
+            </ol>
+        </nav>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputNom">Nom:</label>
+                <input type="text" name="nom" 
+                    id="inputNom" [(ngModel)]="contact.nom" 
+                    class="form-control" 
+                    #nom="ngModel" 
+                    class="form-control" 
+                    required  maxlength="20" minlength="4"
+                    [ngClass]="{'has-danger': nom.invalid && (nom.dirty || nom?.touched),'has-success': nom.valid && (nom.dirty || nom?.touched)}" 
+                />
+
+                <div *ngIf="nom.errors && (nom.dirty || nom?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid) && nom.errors?.required" class="help-block">Nom est obligatoire</div>
+                    <div *ngIf="( f.submitted || f.invalid) && nom.errors?.minlength" class="help-block">La taille minimum est de 4 caracteres</div>
+                    <div *ngIf="( f.submitted || f.invalid) && nom.errors?.maxlength" class="help-block">La taille maximum est de 15 caracteres</div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputPrenom">Prenom:</label>
+                <input type="text" name="prenom" 
+                    id="inputPrenom" [(ngModel)]="contact.prenom" 
+                    class="form-control" 
+                    #prenom="ngModel"
+                    required  maxlength="20" minlength="4"
+                    [ngClass]="{'has-danger': prenom.invalid && (prenom.dirty || prenom?.touched),'has-success': prenom.valid && (prenom.dirty || prenom?.touched)}" 
+                />
+     
+                <div *ngIf="prenom.errors && (prenom.dirty || prenom?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid) && prenom.errors?.required" class="help-block">Prenom est obligatoire</div>
+                    <div *ngIf="( f.submitted || f.invalid) && prenom.errors?.minlength" class="help-block">La taille minimum est de 4 caracteres</div>
+                    <div *ngIf="( f.submitted || f.invalid) && prenom.errors?.maxlength" class="help-block">La taille maximum est de 15 caracteres</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="inputTelephone">Telephone:</label>
+                <input type="text" name="telephone" 
+                    id="inputTelephone" 
+                    [(ngModel)]="contact.telephone" 
+                    class="form-control" 
+                    #telephone="ngModel" 
+                    class="form-control" 
+                    pattern="\+\s?[0-9]{3}[0-9]{2}([0-9](\.|\s)?){3,4}([0-9](\.|\s)?){2,3}[0-9]{2}"  
+                    [ngClass]="{'has-danger': telephone.invalid && (telephone.dirty || telephone?.touched),'has-success': telephone.valid && (telephone.dirty || telephone?.touched)}"
+                />
+
+                <div *ngIf="telephone.errors && ( telephone.dirty || telephone?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid ) && telephone.errore?.required" class="help-block">Telephone is required</div>
+                    <div *ngIf="( f.submitted || f.invalid ) && telephone.errors?.pattern" class="help-block">Format Telephone invalid</div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputAdresse">Adresse:</label>
+                <input type="text" name="adresse" id="inputAdresse" 
+                    [(ngModel)]="contact.adresse" 
+                    class="form-control" 
+                    #adresse="ngModel" 
+                    class="form-control" 
+                    required  
+                    [ngClass]="{'has-danger': adresse.invalid && (adresse.dirty || adresse?.touched),'has-success': adresse.valid && (adresse.dirty || adresse?.touched)}"
+                />
+                <div *ngIf="adresse.errors && ( adresse.dirty || adresse?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid ) && adresse.errore?.required" class="help-block">Adresse is Obligatoire</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <div class="custom-file">
+                    <input type="file"  name="photo"  class="custom-file-input" id="customFileLang" #photo  (change)="uploadf($event)" required lang="fr">
+                    <label class="custom-file-label" for="customFileLang">Selectionner un fichier</label>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+            </div>
+        </div>
+
+       
+        <!--div class="col-sm-1"><label>Photo:</label></div>
+        <div class="col-sm-3">
+            <input type="file" name="photo" class="form-control-file custom-file-input" #photo placeholder="Upload file..."  (change)="uploadf($event)" required />
+        </div-->
+           
+       
+
+
+
+    
+        <div class="formulaire_button">
+            <button type="submit" [disabled]="f.invalid" class="btn btn-info">Enregistrer</button> &nbsp;
+            <button type="reset" class="btn btn-info">Annuler</button>  
+        </div>  
+    </form>
+</div>

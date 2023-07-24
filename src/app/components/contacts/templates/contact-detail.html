@@ -1,0 +1,132 @@
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb ">
+            <li class="breadcrumb-item active bold red" aria-current="page">Contact Detail</li>
+        </ol>
+    </nav>
+
+
+<div class="form-row">
+
+    <div class="form-group col-md-4">
+
+        <div class="form-group">	
+            <div class="col-sm-12" >
+                <div class="card bg-light col-sm-12" style="height:auto;">
+                    <div class="card-header">Details Clients</div>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a [routerLink]="['detailClient']">
+                                    <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-list-ol fa-lg black"></i></button>
+                                    Details client
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a [routerLink]="['achat']">
+                                    <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-ticket fa-lg black"></i></button>
+                                    Historique Achats
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+              
+        </div>
+
+    <div class="form-group col-md-4">
+
+        <form name="updform" #updateForm="ngForm" class="form-horizontal"  (ngSubmit)="Updatecontact(updateForm)" novalidate>
+
+            <div>
+                <button *ngFor="let group of groupList; let i = index" type="button" class="btn {{button_style[i]}}" style="margin-right:3px;" [routerLink]="['/editGroup/', group.id_group , { color: button_style[i] }]" > {{group.libelle}} </button> &nbsp; &nbsp;
+            </div>
+            
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="tobeUpdatedcontact.id" class="form-control"  />
+                <div class="form-row">
+
+                    <div class="form-group col-md-7">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputNom">Nom:</label>
+                                <input type="text" name="nom" id="inputNom" [(ngModel)]="tobeUpdatedcontact.nom" class="form-control" #nom="ngModel" class="form-control" required  />
+                            </div> 
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputPrenom">Prenom:</label>
+                                <input type="text" name="prenom" id="inputPrenom" [(ngModel)]="tobeUpdatedcontact.prenom" class="form-control" #prenom="ngModel" class="form-control" required  />
+                            </div>
+                        </div>
+
+                    </div>
+                        
+                
+                    <div class="form-group col-md-5"> 
+                        <label for="inputNom"></label>
+                        <img src="{{tobeUpdatedcontact.photo}}" height="160"  width="160"  class="rounded float-right" alt="...">
+                    </div>
+            
+                </div>
+
+                <!--div class="form-row">
+                   
+                    <div class="form-group col-md-7">
+                        <label for="inputPrenom">Prenom:</label>
+                        <input type="text" name="prenom" id="inputPrenom" [(ngModel)]="tobeUpdatedcontact.prenom" class="form-control" #prenom="ngModel" class="form-control" required  />
+                    </div>
+                </div-->
+            
+                <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label for="inputTelephone">Telephone:</label>
+                        <input type="text" name="telephone" id="inputTelephone" [(ngModel)]="tobeUpdatedcontact.telephone" class="form-control" #telephone="ngModel" class="form-control" required  />
+                    </div>
+            
+                </div>
+
+                <div class="form-row">
+                  
+                    <div class="form-group col-md-10">
+                        <label for="inputAdresse">Adresse:</label>
+                        <input type="text" name="adresse" id="inputAdresse" [(ngModel)]="tobeUpdatedcontact.adresse" class="form-control" #adresse="ngModel" class="form-control" required  />
+                    </div>
+                </div>
+            
+                <div class="form-row">
+                    <div class="form-check">
+                        <input type="checkbox" name="is_active" id="inputTelephone" 
+                                [(ngModel)]="tobeUpdatedcontact.is_active" 
+                                class="form-control" 
+                                #is_active="ngModel" 
+                                class="form-check-input" 
+                                required 
+                                [checked]="(tobeUpdatedcontact.is_active && tobeUpdatedcontact.is_active == 'OUI')? true:false"
+                        />
+                        <label class="form-check-label" for="defaultCheck1">Is Active</label>
+                        <div *ngIf="updform?.submitted && !is_active.valid" class="help-block">IsActive is required</div>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+                    
+                <div class="formulaire_button">
+                    <button type="submit" class="btn btn-info">Enregistrer</button> &nbsp;
+                    <button type="reset" class="btn btn-info">Annuler</button> 
+                </div> 
+        </form>
+              
+    </div>
+
+    <div class="form-group col-md-4">
+        <div class="col-sm-12" style="border:1px solid #ccc;">
+            <h1 style="font-size:14px;">Localisation Client</h1>
+            <div class="col-sm-12" >
+                <router-outlet name="mapgoogle"></router-outlet>
+            </div>
+        </div>      
+    </div>
+
+</div>

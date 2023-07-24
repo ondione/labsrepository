@@ -1,0 +1,74 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active red" aria-current="page">Group Detail</li>
+    </ol>
+</nav>
+
+<div>
+    <button  type="button" class="btn {{color}}" style="margin-right:3px;"> {{group.nom_group}} </button> &nbsp; &nbsp;
+</div>
+
+<div class="row">&nbsp;</div>
+
+<div class="table-responsive-xl">
+
+    <ng-template [ngTemplateOutlet]="isloading === true ? template1 : template2 "></ng-template>
+        <ng-template #template1>
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-3 center_loader blue">
+                    <img src= "assets/images/ajax-loader.gif" width="120" height="120" />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </ng-template>
+        <ng-template #template2>
+
+            <table class="table table-hover">
+                <caption>List of contact</caption>
+                <thead class="thead-light">
+                    <tr>
+                        <th >Id</th>
+                        <th >Select</th>
+                        <th >Photo</th>
+                        <th >Nom</th>
+                        <th >Prenom</th>
+                        <th >Telephone</th>
+                        <th >Adresse</th>
+                        <th >Ajout Group</th>
+                        <th>Actif/Inactif</th>
+                        <th >Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let cts of listContacts">
+                    <tr>
+                        <th>{{cts.id}}</th>
+                        <th>
+                            <button class="btn btn-light btn-circle btn-circle-sm m-1" >
+                               <input type="checkbox" name="is_active" id="inputTelephone" (change)="selected(cts.id)"/>
+                            </button>
+                        </th>
+                        <th> <img class="rounded-circle green" src="{{cts.photo}}" height="60"  width="60" /></th>
+                        <td>{{cts.nom | PremierLettreEnMajuscuule}}</td>
+                        <td>{{cts.prenom | PremierLettreEnMajuscuule}}</td>
+                        <td>{{cts.telephone | phonePipe :['221','222','223','224','225','226'] }}</td>
+                        <td>{{cts.adresse}}</td>
+                        <td>
+                            <button class="btn btn-light btn-circle btn-circle-sm m-1" (click)="addToGroup(cts,group)"><i class="fa fa-group" aria-hidden="true" ></i></button>
+                        </td>
+                        <td>
+                            <i class="fa fa-toggle-on active" *ngIf="cts.is_active == 'OUI'" (click)="changeStatus(cts);"></i>
+                            <i class="fa fa-toggle-on fa-rotate-180 inactive"  *ngIf="cts.is_active == 'NON'" (click)="changeStatus(cts);"></i>
+                        </td>
+                        <td>
+                            <a [routerLink] = "['contacts/contact', cts.id]"><button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-edit fa-lg gray"></i></button></a> &nbsp;&nbsp;
+                            <a (click)="deleteOnContact(cts)" ><button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-trash-o fa-lg red"></i></button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-sm-9" >
+                <ngb-pagination  [maxSize]="maxsize" [pageSize]="pagesize" [collectionSize]="collectionsize" [(page)]="page" aria-label="Default pagination" (click)="pageChange(page)"  [ellipses]="false"  [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+            </div>
+        </ng-template>
+</div>

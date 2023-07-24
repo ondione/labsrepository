@@ -1,0 +1,109 @@
+https://v2.angular.io/docs/ts/latest/api/
+
+brouillon
+
+<!--
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <input type="text" name="contact1"  ngModel class="form-control"  #contact1  pattern="[A-Za-z0-9]{0,5}" />
+                  
+                </div>
+
+                {{contact1.value  }}  {{ 'contact 1'}}
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <input type="text" name="testval" [(ngModel)]="contact2" class="form-control"  #testval="ngModel" required pattern="[A-Za-z0-9]{0,5}"/>
+                    <div *ngIf="testval.errors && (testval.dirty || testval.touched || testval.invalid)" class="help-block">
+                       
+                        <div [hidden]="!testval.errors.required">
+                                User name not valid required.
+                       </div>
+                       <div [hidden]="!testval.errors.pattern">
+                            User name not valid pattern.
+                       </div>
+                   </div> 
+                   
+                </div>
+
+                {{contact2 +" contact 2"}}
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <input type="text" name="contact3" contact3="$event" class="form-control"  #contact3  />
+                </div>
+
+                {{contact3.value +" event target "}}
+            </div>
+
+            <div class="form-group">
+                <label>Diplomes</label>
+                <div class="checkbox">
+                    <label *ngFor="let togg of toggles">
+                        <input type="checkbox" name=""  [value]="togg.value" (change)="updateCheckedOptions(togg.value,$event)"/>
+                        <span class="span_check">{{ togg.description }}</span>
+                    </label>
+                </div>
+            </div>
+        -->
+            <!--  test validation -->
+        <!--
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" required minlength="5" maxlength="30" [(ngModel)]="title1" name="title" #title="ngModel">
+                <div *ngIf="title.errors && (title.dirty || title.touched)" class="alert alert-danger">
+                    <div [hidden]="!title.errors.required">
+                    Book title is required!
+                    </div>
+                    <div [hidden]="!title.errors.minlength">
+                    Title must be at least 5 characters long.
+                    </div>
+                    <div [hidden]="!title.errors.maxlength">
+                    Title cannot be more than 30 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" required [(ngModel)]="author1" name="author" #author="ngModel">
+                <div *ngIf="author.errors && (author.dirty || author.touched)" class="alert alert-danger">
+                    <div [hidden]="!author.errors.required">
+                        Book author is required!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url" required pattern="https?://.+" [(ngModel)]="url1" name="url" #url="ngModel">
+                <div *ngIf="url.errors && (url.dirty || url.touched)" class="alert alert-danger">
+                    <div [hidden]="!url.errors.required">
+                             URL is required!
+                    </div>
+                    <div [hidden]="!url.errors.pattern">
+                        Must be a valid URL!
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" [(ngModel)]="useremail" required pattern="/^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]+$/" #email="ngModel" >
+                <small [hidden]="email.valid || (email.pristine && !f.submitted)">
+                    Email is required and format should be <i>john@doe.com</i>.
+                </small>
+            </div>
+        -->
+
+         <!--div class="form-group">
+                <input type="hidden" name="toggle" [(ngModel)]="contact.toggle">
+                <div class="checkbox">
+                <label>
+                    <input type="checkbox" [checked]="contact.toggle === toggles[0].value" 
+                        (change)="$event.target.checked? (contact.toggle = toggles[0].value) : (contact.toggle = toggles[1].value)">
+                    {{ toggles[0].display }}
+                </label>
+                </div>
+            </div-->

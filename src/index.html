@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular8</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="assets/album.css"   type="text/css">
+  <link rel="stylesheet" href="assets/styles.css"  type="text/css">
+  <script src="assets/js/charts/loader.js"></script>
+  <script>  
+    //!important: You want to give this variable(var googleLoaded = false;). This is used to run multiple chart in your jade.
+    var googleLoaded = false;
+    //!important: Define which chart packages to preload.Because this package uses ChartWrappers you can use any chart type that Google supports, but if it // isn't loaded it will load it on demand. 
+    var googleChartsPackagesToLoad = ['geochart'];
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0D_5re4Me94c7rsJwyL3tmpHNNWcHxiA" type="text/javascript"></script>
+  <link rel="stylesheet" href="assets/font-awesome.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+<ng-template [ngTemplateOutlet]=" isUserIsAuth() ? template1 : template2 "></ng-template>    
+<ng-template #template1>
+    <admin-header *ngIf="isUserIsAuth() && displayHeaderForRole().adminHeader && !displayHeaderForRole().isScreenLocked"></admin-header>
+    <header-view  *ngIf="isUserIsAuth() && displayHeaderForRole().clientHeader && !displayHeaderForRole().isScreenLocked" [isConnected]="isUserIsAuth()" (logout)="logout()" ></header-view>
+</ng-template>  
+
+
+<ng-template #template2>
+    <div class="bslf"   *ngIf="isUserIsAuth()!=true">
+      
+        <form #f="ngForm"  (ngSubmit)="login_appli(f)" novalidate>
+            <h2 class="text-center">Please login</h2>       
+            <div class="form-group">
+                <input type="text"  name="username"  
+                    #username="ngModel" 
+                    [(ngModel)] ="login" 
+                    class="form-control"    
+                    required
+                    [ngClass]="{'has-danger': username.invalid && (username.dirty || username?.touched),'has-success': username.valid && (username.dirty || username?.touched)}"
+                />
+                <div *ngIf="username.errors && ( username.dirty || username?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid ) && username.error?.required" class="help-block">Login is Obligatoire</div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <input type="password" name="password"  
+                    #password="ngModel" 
+                    [(ngModel)]="pass" 
+                    class="form-control" 
+                    required
+                    [ngClass]="{'has-danger': password.invalid && (password.dirty || password?.touched),'has-success': password.valid && (password.dirty || password?.touched)}"
+                />
+                <div *ngIf="password.errors && ( password.dirty || password?.touched)">
+                    <div *ngIf="( f.submitted || f.invalid ) && password.error?.required" class="help-block">Password est Obligatoire</div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
+                <button type="submit" class="btn btn-primary pull-right">Log in</button>
+            </div>
+            <div class="clearfix">
+                <a *ngIf="isConnected!='true'" [routerLink]="['/changepass']" class="pull-left">Forgot Password?</a>
+                <a href="#" class="pull-right">Create an Account</a>
+            </div>        
+        </form>
+    </div>
+</ng-template>

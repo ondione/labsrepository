@@ -1,0 +1,92 @@
+
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+<div class="row"></div>
+
+<div class="form-horizontal col-sm-10">
+  <form name="form" #f="ngForm"  (ngSubmit)="f.valid && updateProduit(f)" novalidate  class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-2"><label>Ref:</label></div>
+      <div class="col-sm-3">
+          <input type="text" name="ref" [(ngModel)]="tobeUpdatedproduit.ref" class="form-control"  #ref="ngModel" required />
+          <div *ngIf="f.submitted && !ref.valid" class="help-block">Ref is required</div>
+      </div>
+      <div class="col-sm-2"><label>Categorie:</label></div>
+      <div class="col-sm-3">
+          <div class="col-sm-8">
+              <select name="categorie" [(ngModel)]="tobeUpdatedproduit.categorie"   class="form-control"  #categorie="ngModel" required>
+                  <option *ngFor="let cat of categorie_list" [ngValue]="cat.value"> {{cat.value}} </option>
+              </select>
+          </div>
+      </div>
+      <div *ngIf="f.submitted && !categorie.valid" class="help-block">Categorie is required</div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2"><label>Nom:</label></div>
+      <div class="col-sm-3">
+          <input type="text" name="nom" [(ngModel)]="tobeUpdatedproduit.nom" class="form-control"  #nom="ngModel" required />
+          <div *ngIf="f.submitted && !nom.valid" class="help-block">Nom is required</div>
+      </div>
+      <div class="col-sm-2"><label>Libelle:</label></div>
+      <div class="col-sm-3">
+          <input type="text"  name="libelle" [(ngModel)]="tobeUpdatedproduit.libelle"  class="form-control"  #libelle="ngModel" required />
+      </div>
+      <div *ngIf="f.submitted && !libelle.valid" class="help-block">Libelle is required</div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-2"><label>Image:</label></div>
+      <div class="col-sm-3">
+          <input  class="form-control-file" name="image" type="file" (change) ="onFileSelected($event)"   class="form-control"/>
+          <div *ngIf="f.submitted && !image.valid" class="help-block">Nom is required</div>
+      </div>
+      <div class="col-sm-2"><label>Is Expired:</label></div>
+      <div class="col-sm-3">
+          <div *ngFor="let exp of expires" >
+              <div class="radio-inline">
+                  <div class="col-sm-2"><label></label></div>
+                  <input type="radio" name="isexpired" [(ngModel)]="tobeUpdatedproduit.isexpired" [value]="exp.value" #isexpired="ngModel" (change)="displayDateExp(exp.value)"/>  
+                  <label> {{exp.description}} </label>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="f.submitted && !isexpired.valid" class="help-block">IsExpired is required</div>
+    </div>
+  
+    <div class="form-group">
+      <div *ngIf="isShowDateExp">
+        <div class="col-sm-2"><label>Date Expired:</label></div>
+        <div class="col-sm-3">
+            <input type="text" name="date_expired" [(ngModel)]="tobeUpdatedproduit.date_expired" class="form-control"  #date_expired="ngModel" required />
+            <div *ngIf="f.submitted && !date_expired.valid" class="help-block">Date Expired is required</div>
+        </div>
+      </div>
+      <div class="col-sm-2"><label>Qauantite Stock:</label></div>
+      <div class="col-sm-3">
+          <input type="text"  name="quantite_stock" [(ngModel)]="tobeUpdatedproduit.quantite_stock"  class="form-control"  #quantite_stock="ngModel" required />
+      </div>
+      <div *ngIf="f.submitted && !quantite_stock.valid" class="help-block">Quantite stock is required</div>
+    </div>
+
+    <div class="form-group">
+        <div>
+          <div class="col-sm-2"><label>Prix Unitaire:</label></div>
+          <div class="col-sm-3">
+              <input type="text" name="PU" [(ngModel)]="tobeUpdatedproduit.PU" class="form-control"  #PU="ngModel" required />
+              <div *ngIf="f.submitted && !PU.valid" class="help-block">Prix Unitaire is required</div>
+          </div>
+        </div>
+        <div class="col-sm-2"><label></label></div>
+        <div class="col-sm-3"></div>
+        <div></div>
+    </div>
+    
+    <button type="submit" [disabled]="false" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+
+
+<!--div>
+<input  class="form-control-file"  type="file" (change) ="onFileSelected($event)"  #fileInput />
+<button type="button" (click)="onUpload()">Upload</button>
+</div-->

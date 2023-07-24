@@ -1,0 +1,196 @@
+{
+    "user_email": {
+        "EN": "Email",
+        "FR": "Email",
+        "SP": "Emailo"
+    },
+    "user_password": {
+        "EN": "Password",
+        "FR": "Mot de passe",
+        "SP": "Passado"
+    },
+    "user_remember_me": {
+        "EN": "Remember me",
+        "FR": "Se souvenir de moi",
+        "SP": "Rapelar de moi"
+    },
+    "user_connexion_button": {
+        "EN": "Connexion",
+        "FR": "Connexion",
+        "SP": "Connexio"
+    },
+    "user_reset_button": {
+        "EN": "Reset",
+        "FR": "Annuler",
+        "SP": "Annular"
+    },
+    "menu_home": {
+        "EN": "Home",
+        "FR": "Accueil",
+        "SP": " Mais"
+    },
+    "menu_contacts": {
+        "EN": "Contacts",
+        "FR": "Contacts",
+        "SP": "contactos"
+    },
+    "menu_products": {
+        "EN": "Products",
+        "FR": "Produits",
+        "SP": "Produtos"
+    },
+    "menu_tous": {
+        "EN": "All",
+        "FR": "Tous",
+        "SP": "totos"
+    },
+    "menu_deposits": {
+        "EN": "Deposit",
+        "FR": "Depôt",
+        "SP": "Depoto"
+    },
+    "menu_loans": {
+        "EN": "Loans",
+        "FR": "Credit",
+        "SP": "Credito"
+    },
+    "menu_provider": {
+        "EN": "Provider",
+        "FR": "Fournisseurs",
+        "SP": "Providero"
+    }, 
+    "menu_test": {
+        "EN": "Tests",
+        "FR": "Tests",
+        "SP": "Testos"
+    },
+    
+    "menu_add_contact": {
+        "EN": "New Contact",
+        "FR": "Nouveau Contact",
+        "SP": "Nuevo contacto"
+    },
+    "menu_langue": {
+        "EN": "Language",
+        "FR": "Langue",
+        "SP": "Lango"
+    },
+    "home_welcome": {
+        "EN": " Welcome on home Page",
+        "FR": " Bienvenue sur la Page d'accueil",
+        "SP": " Bienvenuos a la pahe"
+    },
+    "user_old_password": {
+        "EN": " Old Password",
+        "FR": " Ancien mot de passe",
+        "SP": " oldo passado"
+    },
+    "user_new_password": {
+        "EN": " New Password",
+        "FR": " Nouveau mot de passe",
+        "SP": " Nuevo passado"
+    },
+    "user_changepasse_button": {
+        "EN": " Change Password",
+        "FR": " Changer Password",
+        "SP": " Cancar Passado"
+    },
+    "submit_button":{
+        "EN": "Submit",
+        "FR": "Envoyer",
+        "SP": "Envoyar"
+    }, 
+    "menu_parametre":{
+        "EN": "Parameters",
+        "FR": "Parametres",
+        "SP": "Parametros"
+    },
+    "menu_charts":{
+        "EN": "Charts",
+        "FR": "Graphes",
+        "SP": "Grafo"
+    },
+    "menu_modal":{
+        "EN": "Modal",
+        "FR": "Modals",
+        "SP": "Modalo"
+    },
+    "label_nom":{
+        "EN": "Name",
+        "FR": "Nom",
+        "SP": "nema"
+    },
+    "label_update_title":{
+        "EN": "Edit \\ Update contact",
+        "FR": "Afficher \\Mettre a jour Contact",
+        "SP": "Affichar \\ Modifar "
+    },
+    "label_prenom":{
+        "EN": "FirstName",
+        "FR": "Prenom",
+        "SP": "Prenome"
+    },
+    "label_adress":{
+        "EN": "Address",
+        "FR": "Adresse",
+        "SP": "adreso"
+    },
+    "label_telephone":{
+        "EN": "Phone",
+        "FR": "Telephone",
+        "SP": "Telepono"
+    },
+    "label_update":{
+        "EN": "Update",
+        "FR": "Modifier",
+        "SP": "Updato"
+    },
+    "label_annuler":{
+        "EN": "Cancel",
+        "FR": "Annuller",
+        "SP": "Cancalar"
+    },
+    "label_login":{
+        "EN": "Username",
+        "FR": "Login",
+        "SP": "Login"
+    },
+    "label_pass":{
+        "EN": "Password",
+        "FR": "Mot de passe",
+        "SP": "Passo"
+    },
+    "label_Id":{
+        "EN": "Id",
+        "FR": "Id",
+        "SP": "Id"
+    },	
+    "label_Nom":{
+        "EN": "Name",
+        "FR": "Nom",
+        "SP": "Nombre"
+    },	
+    "label_Prenom":{
+        "EN": "FirstName",
+        "FR": "Prenom",
+        "SP": "apellido"
+    },	
+    "label_Telephone":{
+        "EN": "Phone Number",
+        "FR": "Telephone",
+        "SP": "Telephono"
+    },
+
+    "label_Adresse":{
+        "EN": "Address",
+        "FR": "Adresse",
+        "SP": "correo"
+    },
+    "label_Actions":{
+        "EN": "Password",
+        "FR": "Mot de passe",
+        "SP": "la contraseña"
+    }
+        
+
+}

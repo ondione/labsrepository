@@ -1,0 +1,246 @@
+[
+    {
+        "id" : 1,
+        "description": {
+            "user_email": "Email"
+        }
+    },
+ 
+    {
+        "id" : 2,
+        "description": {
+            "user_password": "Password"
+	    }
+    },
+	
+	{
+        "id" : 3,
+        "description": {
+         "user_remember_me":  "Remember me"
+        }
+    },
+	
+	{
+        "id" : 4,
+        "description": {
+           "user_connexion_button":  "Connexion"
+        }
+    },
+   
+    {
+        "id" : 5,
+        "description": {
+           "user_reset_button":  "Reset"
+        }
+    },
+	
+	{
+        "id" : 6,
+        "description": {
+           "menu_home":  "Home"
+        }
+    },
+	
+	{
+        "id" : 7,
+        "description": {
+           "menu_contacts":  "Contacts"
+        }
+    },
+	
+	{
+        "id" : 8,
+        "description": {
+           "menu_products":  "Products"
+        }
+    },
+	
+	{
+        "id" : 9,
+        "description": {
+           "menu_tous":  "All"
+        }
+    },
+	
+    {
+        "id" : 10,
+        "description": {
+           "menu_deposits":  "Deposit"
+        }
+    },
+   
+    {
+        "id" : 11,
+        "description": {
+           "menu_loans":  "Loans"
+        }
+    },
+	
+	{
+        "id" : 12,
+        "description": {
+           "menu_provider":  "Provider"
+        }
+    },
+	
+    {
+        "id" : 13,
+        "description": {
+           "menu_test":  "Tests"
+        }
+    },
+	
+	{
+        "id" : 14,
+        "description": {
+           "menu_add_contact":  "New Contact"
+        }
+    },
+	
+	{
+        "id" : 15,
+        "description": {
+           "menu_langue":  "Language"
+        }
+    },
+  
+    {
+        "id" : 16,
+        "description": {
+           "home_welcome":  "Welcome on home Page"
+        }
+    },
+	
+	{
+        "id" : 17,
+        "description": {
+           "user_old_password":  " Old Password"
+        }
+    },
+    
+	{
+        "id" : 18,
+        "description": {
+           "user_new_password":  " New Password"
+        }
+    },
+	
+	{
+        "id" : 19,
+        "description": {
+           "user_changepasse_button":  " Change Password"
+        }
+    },
+	
+	{
+        "id" : 20,
+        "description": {
+           "submit_button":  " Submit"
+        }
+    },
+	
+	{
+        "id" : 21,
+        "description": {
+           "menu_parametre":  " Parameters"
+        }
+    },
+   
+    {
+        "id" : 22,
+        "description": {
+           "menu_charts":  " Charts"
+        }
+    },
+	
+	{
+        "id" : 23,
+        "description": {
+           "menu_charts":  " Charts"
+        }
+    },
+	
+	{
+        "id" : 24,
+        "description": {
+           "menu_modal":  " Modal"
+        }
+    },
+	
+	{
+        "id" : 25,
+        "description": {
+           "label_nom":  " Name"
+        }
+    },
+	
+	{
+        "id" : 26,
+        "description": {
+           "label_update_title":  " Edit \\ Update contact"
+        }
+    },
+	
+	{
+        "id" : 27,
+        "description": {
+           "label_prenom":  " FirstName"
+        }
+    },
+	
+	{
+        "id" : 28,
+        "description": {
+           "label_adress":  " Address"
+        }
+    },
+	
+	{
+        "id" : 29,
+        "description": {
+           "label_telephone":  " Phone"
+        }
+    },
+	
+	{
+        "id" : 30,
+        "description": {
+           "label_update":  " Update"
+        }
+    },
+	
+	{
+        "id" : 31,
+        "description": {
+           "label_annuler":  " Cancel"
+        }
+    },
+	
+	{
+        "id" : 32,
+        "description": {
+           "label_login":  " Username"
+        }
+    },
+	
+	{
+        "id" : 33,
+        "description": {
+           "label_pass":  " Password"
+        }
+    },
+	
+	{
+        "id" : 34,
+        "description": {
+           "test_label":  " Hello word"
+        }
+    },
+	
+	{
+        "id" : 35,
+        "description": {
+           "test_label":  " Hello word"
+        }
+    }
+]

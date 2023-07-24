@@ -1,0 +1,6 @@
+{
+    "api_base_url":"http://localhost/Projectangular/api/v1/",
+    "api_base_url2":"http://localhost/Projectangular2/api/v1/",
+    "api_base_url3":"http://localhost:9218/request/",
+    "secretKey":"AZERTYGBVCFDSXWQAOPMLK9524PLKSDRZFVXBSH"
+}

@@ -1,0 +1,42 @@
+<div class="form-row" style="font-size:14px;">
+    <span class="col-sm-6">
+        <h1 style="font-size:14px;" class="col-sm-12 blue"> Historique achat du client</h1>
+    </span>
+    <span class="col-sm-5" style="text-align:right;" (click)="print()">
+        <h1 style="font-size:14px;" class="col-sm-12 blue"> 
+            Imprime 
+            <button class="btn btn-light btn-circle btn-circle-sm m-1" >
+                <i class="fa fa-print red" ></i>
+            </button>
+        </h1>
+    </span>
+</div>
+
+<div  class="form-row col-sm-12">
+<table class="table table-hover" style="font-size: 12px;">
+    <thead class="thead-light">
+        <tr >
+            <th>Ref</th>
+            <th>Nom</th>
+            <th>Categorie</th>
+            <th>Libelle</th>
+            <th>PU</th>
+            <th>Nbre</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let achat of histPurchase" >
+        <tr>
+            <td>{{achat.ref}}</td>
+            <td>{{achat.nom}}</td>
+            <td>{{achat.categorie}}</td>
+            <td>{{achat.libelle}}</td>
+            <td>{{achat.pu}}</td>
+            <td>{{achat.nbre}}</td>
+        </tr>
+        <tr style="width:15px;"></tr>
+    </tbody>
+</table>
+</div>
+<div class="col-sm-12">
+    <ngb-pagination [maxSize]="maxsize" [pageSize]="pagesize" [collectionSize]="collectionsize" [(page)]="page" aria-label="Default pagination" (click)="pageChange(page)" size="sm"></ngb-pagination>
+</div>

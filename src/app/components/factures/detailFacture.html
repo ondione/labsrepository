@@ -1,0 +1,130 @@
+<div class="container-fluid col-sm-10" >
+        <form [formGroup]="registerForm" class="normal-form" >
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active red bold" aria-current="page">Detail Facture</li>
+                </ol>
+            </nav>
+            
+            <mat-grid-list cols="2" rowHeight="300px" style="margin-top: -20px;">
+                <mat-grid-tile style="width:50px" >
+                    <div class="controles-container">
+                        <mat-form-field>
+                            <input formControlName="prenom" matInput  placeholder="Prenom" />
+                            <mat-error>Champ Prenom est Obligatoire</mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field>
+                            <input formControlName="adresse" matInput  placeholder="Adresse" />
+                            <mat-error>Champ Adresse est Obligatoire</mat-error>
+                        </mat-form-field>
+                      
+                        <mat-form-field>
+                            <input formControlName="email" matInput  placeholder="Email" />
+                           
+                        </mat-form-field>
+    
+                        <div class="add-button-padding">
+                            <section class="example-section">
+                                <mat-checkbox class="example-margin" value="{{tauxTva}}" formControlName="tva">Tva</mat-checkbox>
+                            </section>
+                        </div>
+                          
+                        <div class="button-row">
+                            <input type="hidden" formControlName="$id" />
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile style="width:30px;margin-top: 25px;">
+                    <div class="controles-container"> 
+                        <mat-form-field >
+                            <input formControlName="nom" matInput  placeholder="Nom" />
+                            <mat-error *ngIf="registerForm.controls['nom'].errors?.required">Champ Nom est Obligatoire</mat-error>
+                            <mat-error *ngIf="registerForm.controls['nom'].errors?.maxlength">Champ Nom est Obligatoire</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input formControlName="telephone" matInput  placeholder="Telephone" />
+                            <mat-error>Champ Telephone est Obligatoire</mat-error>
+                        </mat-form-field>
+    
+                        <mat-form-field>
+                            <mat-select formControlName="type" placeholder="Type">
+                                <mat-option>none</mat-option>
+                                <ng-container  *ngFor="let typecli of typeClient">
+                                    <mat-option value="{{typecli.value}}" >{{typecli.libelle}}</mat-option>
+                                </ng-container>
+                            </mat-select>
+                        </mat-form-field>
+    
+                        <mat-form-field>
+                            <input formControlName="ninea" matInput  placeholder="Ninea" />
+                            <mat-error>Champ Ninea est Obligatoire</mat-error>
+                        </mat-form-field>
+    
+                        <!--div class="button-row">
+                            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">Submit</button>
+                            <button type="reset"  class="btn btn-light">Annuler</button>
+                        </div-->
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+        <div  [innerHtml] = "safeValue"></div>
+        
+        <div class="form-row col-sm-12">
+            <div class="form-group col-sm-12">
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th >Ref</th>
+                            <th >Categorie</th>
+                            <th >Nom</th>
+                            <th >Libelle</th>
+                            <th class="right">PU</th>
+                            <th class="center">Nbre</th>
+                            <th >Mnt Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prod of tobeDisplayed$">
+                            <td>{{prod.ref}}</td>
+                            <td>{{prod.categorie }}</td>
+                            <td>{{prod.nom}}</td>
+                            <td>{{prod.libelle}}</td>
+                            <td class="right">{{ prod.PU }}</td>
+                            <td class="center">{{ prod.nbre}}</td>
+                            <td class="bold right">{{ prod.nbre * prod.PU }}</td>
+                        </tr>
+                        <tr *ngIf="tobeDisplayed$.length > 0">
+                            <td ></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Total:</td>
+                            <td class="bold right">{{ calculTotalAchat()  }}</td>
+                        </tr>
+                        <tr *ngIf=" tobeDisplayed$.length > 0 && tauxTva > 0 ">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Montant Tva:</td>
+                            <td class="bold right">{{ calculMontantTva() }}</td>
+                        </tr>
+                        <tr *ngIf="tobeDisplayed$.length > 0">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold right">Montant TTC:</td>
+                            <td class="bold right">{{ calculMontantTotalTTC()  }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--div class="form-group col-sm-1"></div-->
+        </div>
+    </div>

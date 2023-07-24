@@ -1,0 +1,191 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active red bold" aria-current="page">Liste des Contact</li>
+    </ol>
+</nav>
+
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <span *ngIf="selectedList.length > 0" (click)="deleteSelected()" class="bold" >
+            <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-trash-o fa-lg red"></i></button>
+            Supprimer la selection
+        </span>
+    </div>
+    <div class="form-group col-md-3">
+        <span *ngIf="listContacts.length > 0" style="text-decoration:none;border-color:red;font-weight:bold;margin-right: 15px;" (click)="exportListContactCsv()"> 
+            <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-file-excel-o fa-lg green"></i></button>
+            Exporter en csv
+        </span>
+    </div>
+    <div class="form-group col-md-3">
+        <span *ngIf="listContacts.length > 0" style="text-decoration:none;border-color:red;font-weight:bold;margin-right: 15px;" (click)="imprimeListeContacts()"> 
+            <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-file-pdf-o fa-lg red"></i></button>
+            Imprimer Liste Contact
+        </span>
+    </div>
+   
+    <div class="form-group col-md-3" >
+        <span style="text-decoration:none;font-weight:bold;margin-right: 15px;" [routerLink]="['newContact']"  >
+            <button class="btn btn-light btn-circle btn-circle-sm m-1">
+                <i class="fa fa-plus fa-lg green"></i>
+            </button>
+            Ajouter un Contact
+        </span>
+    </div>
+</div>
+
+<!--div class="col-lg-5 mb-4">
+    <div class="bg-white p-4 rounded shadow-sm h-100">
+        <h4 class="mb-4">Small circle buttons</h4>
+     
+        <button class="btn btn-success btn-circle btn-circle-sm m-1"><i class="fa fa-check"></i></button>
+        <button class="btn btn-primary btn-circle btn-circle-sm m-1"><i class="fa fa-cog"></i></button>
+        <button class="btn btn-info btn-circle btn-circle-sm m-1"><i class="fa fa-paper-plane"></i></button>
+        <button class="btn btn-warning btn-circle btn-circle-sm m-1"><i class="fa fa-tags"></i></button>
+        <button class="btn btn-danger btn-circle btn-circle-sm m-1"><i class="fa fa-sliders"></i></button>
+        <button class="btn btn-dark btn-circle btn-circle-sm m-1"><i class="fa fa-search"></i></button>
+        <button class="btn btn-secondary btn-circle btn-circle-sm m-1"><i class="fa fa-wrench"></i></button>
+        <button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-bar-chart"></i></button>
+    </div>
+</div-->
+
+ <!--
+{{ 'les formulaires sont bootstrap ' | uppercase }}   <br/>
+{{ 'les formulaires sont bootstrap ' | lowercase }}   <br/>
+{{ "2019 10 12" | date : 'longDate' }} <br/>
+{{ 125486666.555| number :'1.0-3'  }} <br/>
+{{ 0.1222222 | percent :'1.1-2'  }} <br/>
+{{ 100.25 | currency:'CFA ':'symbol-narrow':'1.0-2' }}<br/>
+
+{{ [12,10,1,5,8,9,6,7,6] | slice:2:5 }}<br/>
+{{ "{'12','10','5','6','8'}" | json }}<br/>
+
+{{ "1250000" | formatNumber: 'CFA' }}<br/>
+
+
+<div >
+    <p>{{[{'nom':'Ndiaye','prenom':'Amadou','telephone':'771456320','adresse':'Dakar Senegal','email':'test@gmail.com'}] | keys}}</p>
+</div>
+
+-->
+<div class="form-row">
+    <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" (click)="refreshSearch();">
+                    <button class="btn btn-light btn-circle btn-circle-xs m-1"><i class="fa fa-refresh black"></i></button>
+                </span>
+            </div>
+            <input type="text" #search name="search" [(ngModel)]="refresh" class="form-control input_search"  placeholder="Recherche Contact" EmptyInput class="form-control"  />
+        </div>
+    </div>
+    <div class="form-group col-md-4"></div>
+</div>
+
+<div class="table-responsive-xl">
+
+    <ng-template [ngTemplateOutlet]="isloading === true ? template1 : template2 "></ng-template>
+        <ng-template #template1>
+            <div class="form-group">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-3 center_loader blue">
+                    <img src= "assets/images/ajax-loader.gif" width="120" height="120" />
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </ng-template>
+        <ng-template #template2>
+
+            <table class="table table-hover">
+                <caption>List of contact</caption>
+                <thead class="thead-light">
+                    <tr>
+                        <th >Id</th>
+                        <th >Select</th>
+                        <th >Photo</th>
+                        <th >Nom</th>
+                        <th >Prenom</th>
+                        <th >Telephone</th>
+                        <th >Adresse</th>
+                        <th >Ajout Group</th>
+                        <th>Actif/Inactif</th>
+                        <th >Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let cts of listContacts">
+                    <tr>
+                        <th>{{cts.id}}</th>
+                        <th>
+                            <button class="btn btn-light btn-circle btn-circle-sm m-1" >
+                               <input type="checkbox" name="is_active" id="inputTelephone" (change)="selected(cts.id)"/>
+                            </button>
+                        </th>
+                        <th> <img class="rounded-circle green" src="{{cts.photo}}" height="60"  width="60" /></th>
+
+                        <td>{{cts.nom}}</td>
+                        <td>{{cts.prenom}}</td>
+                        <td>{{cts.telephone}}</td>
+                        <!--td>{{cts.nom | PremierLettreEnMajuscuule}}</td>
+                        <td>{{cts.prenom | PremierLettreEnMajuscuule}}</td>
+                        <td>{{cts.telephone | phonePipe :['221','222','223','224','225','226'] }}</td-->
+                        <td>{{cts.adresse}}</td>
+                        <td>
+                            <button class="btn btn-light btn-circle btn-circle-sm m-1" (click)="addToGroup(cts,group)"><i class="fa fa-group" aria-hidden="true" ></i></button>
+                        </td>
+                        <td>
+                            <i class="fa fa-toggle-on active" *ngIf="cts.is_active == 'OUI'" (click)="changeStatus(cts);"></i>
+                            <i class="fa fa-toggle-on fa-rotate-180 inactive"  *ngIf="cts.is_active == 'NON'" (click)="changeStatus(cts);"></i>
+                        </td>
+                        <td>
+                            <a [routerLink] = "['contact', cts.id]"><button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-edit fa-lg gray"></i></button></a> &nbsp;&nbsp;
+                            <a (click)="deleteOnContact(cts)" ><button class="btn btn-light btn-circle btn-circle-sm m-1"><i class="fa fa-trash-o fa-lg red"></i></button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-sm-9" >
+                <ngb-pagination  [maxSize]="maxsize" [pageSize]="pagesize" [collectionSize]="collectionsize" [(page)]="page" aria-label="Default pagination" (click)="pageChange(page)"  [ellipses]="false"  [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+            </div>
+        </ng-template>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title text-{{css_style}} bold">{{title}}</h5>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>{{ message }} </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-{{css_style}} btn-sm" (click)="c('confirm')">Confirm</button>
+        <button type="button" class="btn btn-light btn-sm" (click)="c('Close click')">Cancel</button>
+    </div>
+</ng-template>
+
+
+<ng-template #contentGroup let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h5 class="modal-title text-{{css_style}} bold">{{title}}</h5>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-sm-12">
+            <label class="col-sm-3 control-label bold">Group:</label>
+            <select name="group" [(ngModel)]="selectedGroup"   class="form-control" >
+                <option *ngFor="let group of groups" [ngValue]="group.id_group" >{{group.nom_group}}  ( {{group.libelle}} )</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-{{css_style}} btn-sm" (click)="c('confirm')">Ajouter au Group</button>
+        <button type="button" class="btn btn-light btn-sm" (click)="c('Close click')">Annuler</button>
+    </div>
+</ng-template>
+
+

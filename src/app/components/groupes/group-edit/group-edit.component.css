@@ -1,0 +1,91 @@
+
+.green{
+    color: green;
+}
+.blue{
+    color: blue;
+}
+.red{
+    color: red;
+}
+.orange{
+    color:orange;
+}
+.bold{
+    font-weight:bold;
+}
+.gray{
+    color:gray,
+}
+.white{
+    color:white;
+}
+
+.active, .inactive {
+    font-size:25px;cursor:pointer;
+}
+.active, .inactive {
+    font-size:25px;cursor:pointer;
+}
+i.active { color: #5cb85c}
+i.inactive {color: #d9534f}
+        
+         
+.btn-circle {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    padding: 0;
+    border-radius: 50%;
+}
+  
+.btn-circle i {
+    position: relative;
+    top: -1px;
+}
+  
+.btn-circle-sm {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 0.9rem;
+}
+  
+.btn-circle-lg {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 1.1rem;
+}
+  
+.btn-circle-xl {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 1.3rem;
+}
+
+.btn-circle-xs {
+    width: 18px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 1.1rem;
+}
+.input_search{
+    height: 25px;
+    line-height: 25px;
+    outline:none;
+}
+
+.bgreen{
+    background-color : green;
+}
+
+ngb-pagination ::ng-deep ul > li > a {
+    color: #000 !important;
+    border:none;
+}
+ngb-pagination ::ng-deep ul > li.active > a {
+    background-color: #dee2e6 !important;
+}
