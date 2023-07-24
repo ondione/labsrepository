@@ -205,7 +205,7 @@ const metaReducers: MetaReducer<State>[] = [storePersist];
     BrowserModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB0D_5re4Me94c7rsJwyL3tmpHNNWcHxiA',
+      apiK:'',
       libraries: ['geometry','places']
     }),
     JwtModule
